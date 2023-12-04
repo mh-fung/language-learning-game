@@ -20,4 +20,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
+
+.card:active {
+    transform: scale(0.9);
+}
+.card__front {
+    width: 25vw;
+    height: 10vh;
+    position: absolute;
+}
+.card__back {
+    width: 25vw;
+    height: 10vh;
+    position: absolute;
+}
+
+.card.flip {
+    background-color: black;
+}
+
