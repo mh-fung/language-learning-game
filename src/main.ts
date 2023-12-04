@@ -45,29 +45,46 @@ buttonClear.addEventListener("click", flipOver)
 
 //Game begins
 let firstCard: string;
+let firstValue: HTMLDivElement;
 let secondCard: string;
+let secondValue: HTMLDivElement;
 let hasFlippedCard = false;
 
 const flipCard = (event: Event) => {
   const target = event.currentTarget as HTMLDivElement;
   target.classList.toggle("flip");
   if (hasFlippedCard === false) {
+    firstValue = target
     firstCard = target.innerHTML;
     hasFlippedCard = true;
   } else {
-    secondCard = target.innerHTML
+    secondValue = target;
+    secondCard = target.innerHTML;
+    setTimeout(isSame, 1500)
   }
+
 }
-const checkResult = ()=> {
+const isSame = () => {
   if (firstCard === secondCard) {
-    console.log("Match!")
+    console.log("Match!");
+    hasFlippedCard = false;
+    firstValue.classList.add("complete");
+    firstValue.removeEventListener("click", flipCard);
+    secondValue.classList.add("complete");
+    secondValue.removeEventListener("click", flipCard);
+    return true
   } else if (firstCard !== secondCard){
-    console.log("sorry")
-    firstCard = ""
+    console.log("sorry");
+    firstValue.classList.add("flip");
+    firstCard = "";
+    secondValue.classList.add("flip");
+    secondCard = "";
+    hasFlippedCard = false;
+    return false
   }
 }
 
 
 cards.forEach(card => {
-  card.addEventListener("click", flipCard)
+  card.addEventListener("click", flipCard);
 })

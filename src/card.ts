@@ -10,7 +10,7 @@ export const cardArray1: Card[] = [
     {chineseWord: "火", englishMeaning: "Fire"}, 
     {chineseWord: "心", englishMeaning: "Heart"}, 
     {chineseWord: "男", englishMeaning: "Male"}, 
-    {chineseWord: "女", englishMeaning: "Earth"}, 
+    {chineseWord: "女", englishMeaning: "Female"}, 
     {chineseWord: "男", englishMeaning: "Male"}, 
     {chineseWord: "一", englishMeaning: "One"}, 
     {chineseWord: "火", englishMeaning: "Fire"}, 
