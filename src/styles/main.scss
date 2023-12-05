@@ -1,30 +1,49 @@
+@use "./variables" as *;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+.header {
+    background-color: $color-red;
+    display: flex;
+    justify-content: space-around;
+    h1 {
+        font-size: 20px;
+        padding: 10px;
+        color: $color-white;
+    }
 
+}
 .card-container {
     display: grid;
-    padding: 20px;
+    padding: 8vh 20px;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    background-color: $color-grey;
 }
 
 .card {
     width: 25vw;
-    height: 10vh;
-    border: 1px solid black;
+    height: 15vh;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: $color-darkgrey;
+    
+    img {
+        width: 40vw;
+        height: 15vh;
+    }
 }
 
 .card:active {
-    transform: scale(0.9);
+    transform: scale(0.98);
 }
 
 .flip {
@@ -32,5 +51,30 @@
 }
 
 .complete {
-    background-color: aqua;
+    background-color: $color-red;
+    color: $color-white;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: $color-black;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: $color-white;
+    font-size: 12px;
+    width: 30vw;
+    height:30px;
+    font-weight: bold;
+    border: 1px solid $color-grey;
+    transition: 0.3s;
+    transform: skew(-20deg);
+    background-color: $color-red;
+    padding: 10px;
 }
