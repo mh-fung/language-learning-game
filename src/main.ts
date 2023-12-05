@@ -1,47 +1,35 @@
 import './styles/main.scss';
-import { Card, cardArray1 } from './card';
+import { Card, cardArray1, cardArray2 } from './card';
 
 //Gaining access to the html elements
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
 const buttonStart = document.querySelector<HTMLButtonElement>(".button");
-const buttonBegin = document.querySelector<HTMLButtonElement>(".buttonB");
-const buttonClear = document.querySelector<HTMLButtonElement>(".button--clear");
-if (!cardContainer || !buttonBegin|| !buttonStart|| !buttonClear) {
+const buttonBegin = document.querySelector<HTMLButtonElement>(".buttonBegin");
+if (!cardContainer || !buttonBegin|| !buttonStart) {
   throw new Error("Issues with Selector");
 };
 
 const cards = document.querySelectorAll<HTMLDivElement>(".card");
 
 
-
+//Function that renders the card content
+const renderCardContent = (cardArray: Card[]): any => {
+  cardArray.forEach(card => {
+    const index = cardArray.indexOf(card)
+    cards[index].innerHTML = `<p>${cardArray[index].chineseWord}</p><p>${cardArray[index].englishMeaning}</p>`
+  })
+};
+buttonStart.addEventListener("click", renderCardContent(cardArray1))
 
 //function that flips all cards
 const flipCards = () => {
   cards.forEach(card => {
     card.classList.toggle("flip");
   })
+  buttonBegin.style.display = "none";
 }
-//Function that renders the card content. for card[0] -> card--1
-const renderCardContent = (cardArray: Card[]): any => {
-  cards.forEach(card => {
-    card.innerHTML = `<p>${cardArray[Number(card.innerText) - 1].chineseWord}</p><p>${cardArray[Number(card.innerText) - 1].englishMeaning}</p>`
-  });
-  console.log("here")
-};
-buttonStart.addEventListener("click", renderCardContent(cardArray1))
-
 //Add event listener to the button
 buttonBegin.addEventListener("click", flipCards);
-
-//function to clear the content
-const flipOver = () => {
-  cards.forEach(card => {
-    card.innerHTML = ""
-  })
-}
-//Add event listener to the button
-buttonClear.addEventListener("click", flipOver)
-
 
 //Game begins
 let firstCard: string;
@@ -60,13 +48,12 @@ const flipCard = (event: Event) => {
   } else {
     secondValue = target;
     secondCard = target.innerHTML;
-    setTimeout(isSame, 1500)
+    setTimeout(isSame, 1000)
   }
 
 }
 const isSame = () => {
   if (firstCard === secondCard) {
-    console.log("Match!");
     hasFlippedCard = false;
     firstValue.classList.add("complete");
     firstValue.removeEventListener("click", flipCard);
@@ -74,7 +61,6 @@ const isSame = () => {
     secondValue.removeEventListener("click", flipCard);
     return true
   } else if (firstCard !== secondCard){
-    console.log("sorry");
     firstValue.classList.add("flip");
     firstCard = "";
     secondValue.classList.add("flip");
