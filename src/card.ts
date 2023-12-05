@@ -4,7 +4,7 @@ export type Card = {
     englishMeaning: string;    
 };
 
-export const cardArray1: Card[] = [
+export const cardArrayEasy: Card[] = [
     {chineseWord: "一", englishMeaning: "One"}, 
     {chineseWord: "女", englishMeaning: "Female"}, 
     {chineseWord: "火", englishMeaning: "Fire"}, 
@@ -19,7 +19,7 @@ export const cardArray1: Card[] = [
     {chineseWord: "心", englishMeaning: "Heart"}, 
 ];
 
-export const cardArray2: Card[] = [
+export const cardArrayIntermediate: Card[] = [
     {chineseWord: "二", englishMeaning: "Two"}, 
     {chineseWord: "魚", englishMeaning: "Fish"}, 
     {chineseWord: "中", englishMeaning: "Middle"}, 
@@ -32,4 +32,19 @@ export const cardArray2: Card[] = [
     {chineseWord: "月", englishMeaning: "Moon"}, 
     {chineseWord: "水", englishMeaning: "Water"}, 
     {chineseWord: "二", englishMeaning: "Two"}, 
+];
+
+export const cardArrayHard: Card[] = [
+    {chineseWord: "雀", englishMeaning: "Bird"}, 
+    {chineseWord: "木", englishMeaning: "Wood"}, 
+    {chineseWord: "希", englishMeaning: "Hope"}, 
+    {chineseWord: "國", englishMeaning: "Country"}, 
+    {chineseWord: "森", englishMeaning: "Forest"}, 
+    {chineseWord: "好", englishMeaning: "Good"}, 
+    {chineseWord: "雀", englishMeaning: "Bird"}, 
+    {chineseWord: "好", englishMeaning: "Good"}, 
+    {chineseWord: "國", englishMeaning: "Country"}, 
+    {chineseWord: "希", englishMeaning: "Hope"}, 
+    {chineseWord: "森", englishMeaning: "Forest"}, 
+    {chineseWord: "木", englishMeaning: "Wood"}, 
 ];

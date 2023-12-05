@@ -1,39 +1,72 @@
 import './styles/main.scss';
-import { Card, cardArray1, cardArray2 } from './card';
+import { Card, cardArrayEasy, cardArrayIntermediate, cardArrayHard } from './card';
 
 //Gaining access to the html elements
 const display = document.querySelector<HTMLElement>("#display-board")
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
-const buttonStart = document.querySelector<HTMLButtonElement>(".button");
-if (!display||!cardContainer || !buttonStart) {
+const buttonEasy = document.querySelector<HTMLButtonElement>(".button--easy");
+const buttonInter = document.querySelector<HTMLButtonElement>(".button--inter");
+const buttonHard = document.querySelector<HTMLButtonElement>(".button--hard");
+if (!display||!cardContainer || !buttonEasy|| !buttonInter|| !buttonHard) {
   throw new Error("Issues with Selector");
 };
 
 const cards = document.querySelectorAll<HTMLDivElement>(".card");
-
-
-//Function that renders the card content
-const renderCardContent = () => {
+//Function that renders the card content for the easy level
+const renderCardContentEasy = () => {
   cards.forEach(card => {
     card.classList.remove("complete");
     card.addEventListener("click", flipCard)
   })
   numberOfCompletedPairs = 0
   display.innerText = `completed: ${numberOfCompletedPairs}/6`
-  cardArray1.forEach(card => {
-    const index = cardArray1.indexOf(card);
-    cards[index].innerHTML = `<p>${cardArray1[index].chineseWord}</p><p>${cardArray1[index].englishMeaning}</p>`;
+  cardArrayEasy.forEach(card => {
+    const index = cardArrayEasy.indexOf(card);
+    cards[index].innerHTML = `<p>${cardArrayEasy[index].chineseWord}</p><p>${cardArrayEasy[index].englishMeaning}</p>`;
   })
   setTimeout(flipCards, 3000)
 };
-buttonStart.addEventListener("click", renderCardContent)
+buttonEasy.addEventListener("click", renderCardContentEasy)
+//Function that renders the card content for the intermediate level
+const renderCardContentInter = () => {
+  cards.forEach(card => {
+    card.classList.remove("complete");
+    card.addEventListener("click", flipCard)
+  })
+  numberOfCompletedPairs = 0
+  display.innerText = `completed: ${numberOfCompletedPairs}/6`
+  cardArrayEasy.forEach(card => {
+    const index = cardArrayEasy.indexOf(card);
+    cards[index].innerHTML = `<p>${cardArrayIntermediate[index].chineseWord}</p><p>${cardArrayIntermediate[index].englishMeaning}</p>`;
+  })
+  setTimeout(flipCards, 3000)
+};
+buttonInter.addEventListener("click", renderCardContentInter)
 
-//function that flips all cards
+//Function that renders the card content for the hard level
+const renderCardContentHard = () => {
+  cards.forEach(card => {
+    card.classList.remove("complete");
+    card.addEventListener("click", flipCard)
+  })
+  numberOfCompletedPairs = 0
+  display.innerText = `completed: ${numberOfCompletedPairs}/6`
+  cardArrayEasy.forEach(card => {
+    const index = cardArrayEasy.indexOf(card);
+    cards[index].innerHTML = `<p>${cardArrayHard[index].chineseWord}</p><p>${cardArrayHard[index].englishMeaning}</p>`;
+  })
+  setTimeout(flipCards, 3000)
+};
+buttonHard.addEventListener("click", renderCardContentHard)
+
+//Function that flips all cards
 const flipCards = () => {
   cards.forEach(card => {
     card.classList.toggle("flip");
   })
-  buttonStart.style.display = "none";
+  buttonEasy.style.display = "none";
+  buttonInter.style.display = "none";
+  buttonHard.style.display = "none";
 }
 
 //Game begins
@@ -69,7 +102,9 @@ const isSame = () => {
     display.innerText = `completed: ${numberOfCompletedPairs}/6`
     if (numberOfCompletedPairs == 6) {
       //Game completed, should return to the beginning stage
-      buttonStart.style.display = "unset";
+      buttonEasy.style.display = "unset";
+      buttonInter.style.display = "unset";
+      buttonHard.style.display = "unset";
       console.log("WOOOOHOOOOO")
     }
     return true
