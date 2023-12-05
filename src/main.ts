@@ -2,10 +2,10 @@ import './styles/main.scss';
 import { Card, cardArray1, cardArray2 } from './card';
 
 //Gaining access to the html elements
+const display = document.querySelector<HTMLElement>("#display-board")
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
 const buttonStart = document.querySelector<HTMLButtonElement>(".button");
-const buttonBegin = document.querySelector<HTMLButtonElement>(".buttonBegin");
-if (!cardContainer || !buttonBegin|| !buttonStart) {
+if (!display||!cardContainer || !buttonStart) {
   throw new Error("Issues with Selector");
 };
 
@@ -13,30 +13,36 @@ const cards = document.querySelectorAll<HTMLDivElement>(".card");
 
 
 //Function that renders the card content
-const renderCardContent = (cardArray: Card[]): any => {
-  cardArray.forEach(card => {
-    const index = cardArray.indexOf(card)
-    cards[index].innerHTML = `<p>${cardArray[index].chineseWord}</p><p>${cardArray[index].englishMeaning}</p>`
+const renderCardContent = () => {
+  cards.forEach(card => {
+    card.classList.remove("complete");
+    card.addEventListener("click", flipCard)
   })
+  numberOfCompletedPairs = 0
+  display.innerText = `completed: ${numberOfCompletedPairs}/6`
+  cardArray1.forEach(card => {
+    const index = cardArray1.indexOf(card);
+    cards[index].innerHTML = `<p>${cardArray1[index].chineseWord}</p><p>${cardArray1[index].englishMeaning}</p>`;
+  })
+  setTimeout(flipCards, 3000)
 };
-buttonStart.addEventListener("click", renderCardContent(cardArray1))
+buttonStart.addEventListener("click", renderCardContent)
 
 //function that flips all cards
 const flipCards = () => {
   cards.forEach(card => {
     card.classList.toggle("flip");
   })
-  buttonBegin.style.display = "none";
+  buttonStart.style.display = "none";
 }
-//Add event listener to the button
-buttonBegin.addEventListener("click", flipCards);
 
 //Game begins
 let firstCard: string;
 let firstValue: HTMLDivElement;
 let secondCard: string;
 let secondValue: HTMLDivElement;
-let hasFlippedCard = false;
+let hasFlippedCard: boolean = false;
+let numberOfCompletedPairs: number = 0;
 
 const flipCard = (event: Event) => {
   const target = event.currentTarget as HTMLDivElement;
@@ -59,6 +65,13 @@ const isSame = () => {
     firstValue.removeEventListener("click", flipCard);
     secondValue.classList.add("complete");
     secondValue.removeEventListener("click", flipCard);
+    numberOfCompletedPairs += 1
+    display.innerText = `completed: ${numberOfCompletedPairs}/6`
+    if (numberOfCompletedPairs == 6) {
+      //Game completed, should return to the beginning stage
+      buttonStart.style.display = "unset";
+      console.log("WOOOOHOOOOO")
+    }
     return true
   } else if (firstCard !== secondCard){
     firstValue.classList.add("flip");
