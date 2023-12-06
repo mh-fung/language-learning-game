@@ -129,9 +129,10 @@ const flipCard = (event: Event) => {
   const target = event.currentTarget as HTMLDivElement;
   target.classList.toggle("flip");
   if (hasFlippedCard === false) {
-    firstValue = target
+    firstValue = target;
     firstCard = target.innerHTML;
     hasFlippedCard = true;
+    firstValue.removeEventListener("click", flipCard);
   } else {
     secondValue = target;
     secondCard = target.innerHTML;
@@ -156,6 +157,7 @@ const isSame = () => {
     return true
   } else if (firstCard !== secondCard) {
     firstValue.classList.add("flip");
+    firstValue.addEventListener("click", flipCard);
     firstCard = "";
     secondValue.classList.add("flip");
     secondCard = "";
@@ -163,9 +165,6 @@ const isSame = () => {
     return false
   }
 }
-
-
-
 //function for the timer
 let time = 15;
 const updateTimer =() => {
