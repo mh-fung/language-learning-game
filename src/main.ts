@@ -93,7 +93,7 @@ const flipCard = (event: Event) => {
   } else {
     secondValue = target;
     secondCard = target.innerHTML;
-    setTimeout(isSame, 1000)
+    setTimeout(isSame, 500)
   }
 
 }
