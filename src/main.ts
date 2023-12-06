@@ -2,12 +2,13 @@ import './styles/main.scss';
 import { Card, cardArrayEasy, cardArrayIntermediate, cardArrayHard } from './card';
 
 //Gaining access to the html elements
-const display = document.querySelector<HTMLElement>("#display-board")
+const display = document.querySelector<HTMLElement>("#display-board");
+const timer = document.querySelector<HTMLHeadingElement>("#timer");
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
 const buttonEasy = document.querySelector<HTMLButtonElement>(".button--easy");
 const buttonInter = document.querySelector<HTMLButtonElement>(".button--inter");
 const buttonHard = document.querySelector<HTMLButtonElement>(".button--hard");
-if (!display || !cardContainer || !buttonEasy || !buttonInter || !buttonHard) {
+if (!display || !timer || !cardContainer || !buttonEasy || !buttonInter || !buttonHard) {
   throw new Error("Issues with Selector");
 };
 
@@ -27,7 +28,13 @@ const renderCardContentEasy = () => {
     const index = cardArrayEasy.indexOf(card);
     cards[index].innerHTML = `<p>${cardArrayEasy[index].chineseWord}</p><p>${cardArrayEasy[index].englishMeaning}</p>`;
   })
-  setTimeout(flipCards, 15000)
+  setTimeout(flipCards, 16000);
+  const startTimer = setInterval(updateTimer, 1000);
+  const stopTimer = () => {
+    timer.innerText = "00:00";
+    clearInterval(startTimer);
+  };
+  setTimeout(stopTimer, 16000);
 };
 buttonEasy.addEventListener("click", renderCardContentEasy)
 //Function that renders the card content for the intermediate level
@@ -45,7 +52,13 @@ const renderCardContentInter = () => {
     const index = cardArrayEasy.indexOf(card);
     cards[index].innerHTML = `<p>${cardArrayIntermediate[index].chineseWord}</p><p>${cardArrayIntermediate[index].englishMeaning}</p>`;
   })
-  setTimeout(flipCards, 15000)
+  setTimeout(flipCards, 16000)
+  const startTimer = setInterval(updateTimer, 1000);
+  const stopTimer = () => {
+    timer.innerText = "00:00";
+    clearInterval(startTimer);
+  };
+  setTimeout(stopTimer, 16000);
 };
 buttonInter.addEventListener("click", renderCardContentInter)
 
@@ -64,7 +77,13 @@ const renderCardContentHard = () => {
     const index = cardArrayEasy.indexOf(card);
     cards[index].innerHTML = `<p>${cardArrayHard[index].chineseWord}</p><p>${cardArrayHard[index].englishMeaning}</p>`;
   })
-  setTimeout(flipCards, 15000)
+  setTimeout(flipCards, 16000)
+  const startTimer = setInterval(updateTimer, 1000);
+  const stopTimer = () => {
+    timer.innerText = "00:00";
+    clearInterval(startTimer);
+  };
+  setTimeout(stopTimer, 16000);
 };
 buttonHard.addEventListener("click", renderCardContentHard)
 
@@ -127,3 +146,11 @@ const isSame = () => {
 cards.forEach(card => {
   card.addEventListener("click", flipCard);
 })
+
+
+//function for the timer
+let time = 15;
+const updateTimer =() => {
+  timer.innerHTML = `00:${time}`;
+  time--;
+};
