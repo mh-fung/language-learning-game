@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .header {
     background-color: $color-red;
     display: flex;
@@ -14,13 +15,25 @@
         padding: 10px;
         color: $color-white;
     }
-
+}
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 15vh;
+    padding: 5px;
+    background-color: $color-black;
+    color: $color-white;
+    &--title {
+        font-size: 25px;
+        padding-bottom: 10px;
+    }
 }
 #timer {
     background-color: $color-grey;
     text-align: center;
     font-size: 40px;
-    padding: 20px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
 }
 
 .card-container {

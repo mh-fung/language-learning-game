@@ -3,12 +3,13 @@ import { Card, cardArrayEasy, cardArrayIntermediate, cardArrayHard } from './car
 
 //Gaining access to the html elements
 const display = document.querySelector<HTMLElement>("#display-board");
+const instruction = document.querySelector<HTMLElement>(".instruction");
 const timer = document.querySelector<HTMLHeadingElement>("#timer");
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
 const buttonEasy = document.querySelector<HTMLButtonElement>(".button--easy");
 const buttonInter = document.querySelector<HTMLButtonElement>(".button--inter");
 const buttonHard = document.querySelector<HTMLButtonElement>(".button--hard");
-if (!display || !timer || !cardContainer || !buttonEasy || !buttonInter || !buttonHard) {
+if (!display || !instruction || !timer || !cardContainer || !buttonEasy || !buttonInter || !buttonHard) {
   throw new Error("Issues with Selector");
 };
 
@@ -16,6 +17,7 @@ const cards = document.querySelectorAll<HTMLDivElement>(".card");
 //Function that renders the card content for the easy level
 const renderCardContentEasy = () => {
   //resetting to the beginning stage of the game
+  instruction.style.display = "none";
   buttonEasy.style.display = "none";
   buttonInter.style.display = "none";
   buttonHard.style.display = "none";
