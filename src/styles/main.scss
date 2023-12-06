@@ -16,9 +16,16 @@
     }
 
 }
+#timer {
+    background-color: $color-grey;
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 20px 0px 20px;
+}
+
 .card-container {
     display: grid;
-    padding: 8vh 20px;
+    padding: 20px 20px 15px 20px;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;

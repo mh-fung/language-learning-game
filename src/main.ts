@@ -15,26 +15,36 @@ if (!display || !timer || !cardContainer || !buttonEasy || !buttonInter || !butt
 const cards = document.querySelectorAll<HTMLDivElement>(".card");
 //Function that renders the card content for the easy level
 const renderCardContentEasy = () => {
+  //resetting to the beginning stage of the game
   buttonEasy.style.display = "none";
   buttonInter.style.display = "none";
   buttonHard.style.display = "none";
   cards.forEach(card => {
     card.classList.remove("complete");
-    card.addEventListener("click", flipCard)
   })
   numberOfCompletedPairs = 0
-  display.innerText = `Completed: ${numberOfCompletedPairs}/6`
+  display.innerText = `Completed: ${numberOfCompletedPairs}/6`;
+  //rendering in the content
   cardArrayEasy.forEach(card => {
     const index = cardArrayEasy.indexOf(card);
     cards[index].innerHTML = `<p>${cardArrayEasy[index].chineseWord}</p><p>${cardArrayEasy[index].englishMeaning}</p>`;
   })
+  //setting the timer and flip the cards
   setTimeout(flipCards, 16000);
   const startTimer = setInterval(updateTimer, 1000);
   const stopTimer = () => {
     timer.innerText = "00:00";
+    time = 15;
     clearInterval(startTimer);
   };
   setTimeout(stopTimer, 16000);
+//add eventlistener to the cards
+const addEventListenerToTheCards = () => {
+  cards.forEach(card => {
+    card.addEventListener("click", flipCard);
+  });
+}
+setTimeout(addEventListenerToTheCards, 16000);
 };
 buttonEasy.addEventListener("click", renderCardContentEasy)
 //Function that renders the card content for the intermediate level
@@ -44,7 +54,6 @@ const renderCardContentInter = () => {
   buttonHard.style.display = "none";
   cards.forEach(card => {
     card.classList.remove("complete");
-    card.addEventListener("click", flipCard)
   })
   numberOfCompletedPairs = 0
   display.innerText = `Completed: ${numberOfCompletedPairs}/6`
@@ -56,9 +65,16 @@ const renderCardContentInter = () => {
   const startTimer = setInterval(updateTimer, 1000);
   const stopTimer = () => {
     timer.innerText = "00:00";
+    time = 15;
     clearInterval(startTimer);
   };
   setTimeout(stopTimer, 16000);
+  const addEventListenerToTheCards = () => {
+    cards.forEach(card => {
+      card.addEventListener("click", flipCard);
+    });
+  }
+  setTimeout(addEventListenerToTheCards, 16000);
 };
 buttonInter.addEventListener("click", renderCardContentInter)
 
@@ -81,9 +97,16 @@ const renderCardContentHard = () => {
   const startTimer = setInterval(updateTimer, 1000);
   const stopTimer = () => {
     timer.innerText = "00:00";
+    time = 15;
     clearInterval(startTimer);
   };
   setTimeout(stopTimer, 16000);
+  const addEventListenerToTheCards = () => {
+    cards.forEach(card => {
+      card.addEventListener("click", flipCard);
+    });
+  }
+  setTimeout(addEventListenerToTheCards, 16000);
 };
 buttonHard.addEventListener("click", renderCardContentHard)
 
@@ -114,7 +137,6 @@ const flipCard = (event: Event) => {
     secondCard = target.innerHTML;
     setTimeout(isSame, 500)
   }
-
 }
 const isSame = () => {
   if (firstCard === secondCard) {
@@ -142,10 +164,6 @@ const isSame = () => {
   }
 }
 
-
-cards.forEach(card => {
-  card.addEventListener("click", flipCard);
-})
 
 
 //function for the timer
