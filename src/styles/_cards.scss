@@ -19,7 +19,7 @@
     align-items: center;
     position: relative;
     background-color: $color-white;
-    
+
     img {
         width: 40vw;
         height: 15vh;
@@ -37,4 +37,12 @@
 .complete {
     background-color: $color-red;
     color: $color-white;
+}
+
+@media screen and (min-width:$desktop-breakpoint) {
+    .card {
+        &__words {
+            font-size: 25px;
+        }
+    }
 }

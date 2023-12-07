@@ -4,12 +4,13 @@ import { Card, cardArrayEasy, cardArrayIntermediate, cardArrayHard } from './car
 //Gain access to the html elements
 const display = document.querySelector<HTMLElement>("#display-board");
 const instruction = document.querySelector<HTMLElement>(".instruction");
-const timer = document.querySelector<HTMLHeadingElement>("#timer");
+const timer = document.querySelector<HTMLHeadingElement>(".timer");
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
+const buttonContainer = document.querySelector<HTMLElement>(".buttons")
 const buttonEasy = document.querySelector<HTMLButtonElement>(".button--easy");
 const buttonInter = document.querySelector<HTMLButtonElement>(".button--inter");
 const buttonHard = document.querySelector<HTMLButtonElement>(".button--hard");
-if (!display || !instruction || !timer || !cardContainer || !buttonEasy || !buttonInter || !buttonHard) {
+if (!display || !instruction || !timer || !cardContainer || !buttonContainer|| !buttonEasy || !buttonInter || !buttonHard) {
   throw new Error("Issues with Selector");
 };
 const cards = document.querySelectorAll<HTMLDivElement>(".card");
@@ -17,6 +18,7 @@ const cards = document.querySelectorAll<HTMLDivElement>(".card");
 //Function to reset the game
 const reset = () => {
   instruction.style.display = "none";
+  buttonContainer.style.display = "none";
   buttonEasy.style.display = "none";
   buttonInter.style.display = "none";
   buttonHard.style.display = "none";
@@ -75,7 +77,7 @@ const renderCardContentEasy = () => {
   //render the content for the easy level
   cardArrayEasy.forEach(card => {
     const index = cardArrayEasy.indexOf(card);
-    cards[index].innerHTML = `<p>${cardArrayEasy[index].chineseWord}</p><p>${cardArrayEasy[index].englishMeaning}</p>`;
+    cards[index].innerHTML = `<p class="card__words">${cardArrayEasy[index].chineseWord}</p><p>${cardArrayEasy[index].englishMeaning}</p>`;
   });
 };
 buttonEasy.addEventListener("click", renderCardContentEasy);
@@ -88,7 +90,7 @@ const renderCardContentInter = () => {
   //render the content for the intermediate level
   cardArrayIntermediate.forEach(card => {
     const index = cardArrayIntermediate.indexOf(card);
-    cards[index].innerHTML = `<p>${cardArrayIntermediate[index].chineseWord}</p><p>${cardArrayIntermediate[index].englishMeaning}</p>`;
+    cards[index].innerHTML = `<p class="card__words">${cardArrayIntermediate[index].chineseWord}</p><p>${cardArrayIntermediate[index].englishMeaning}</p>`;
   });
 };
 buttonInter.addEventListener("click", renderCardContentInter);
@@ -101,7 +103,7 @@ const renderCardContentHard = () => {
   //render the content for the hard level
   cardArrayHard.forEach(card => {
     const index = cardArrayHard.indexOf(card);
-    cards[index].innerHTML = `<p>${cardArrayHard[index].chineseWord}</p><p>${cardArrayHard[index].englishMeaning}</p>`;
+    cards[index].innerHTML = `<p class="card__words">${cardArrayHard[index].chineseWord}</p><p>${cardArrayHard[index].englishMeaning}</p>`;
   });
 };
 buttonHard.addEventListener("click", renderCardContentHard)
@@ -140,6 +142,7 @@ const isSame = () => {
     display.innerText = `Completed: ${numberOfCompletedPairs}/6`;
     if (numberOfCompletedPairs == 6) {
       //Game completed, diff level button appears
+      buttonContainer.style.display = "flex";
       buttonEasy.style.display = "flex";
       buttonInter.style.display = "flex";
       buttonHard.style.display = "flex";

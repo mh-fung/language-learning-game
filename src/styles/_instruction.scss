@@ -8,16 +8,25 @@
     padding: 5px;
     background-color: $color-red;
     color: $color-white;
-    &--title {
+    &__title {
         font-size: 25px;
         padding-bottom: 10px;
         color: $color-black;
     }
-    &--content {
+    &__content {
         padding: 10px;
         text-align: center;
         line-height: 1.2;
         border-top: 3px solid $color-grey;
         border-bottom: 3px solid $color-grey;
+    }
+}
+
+@media screen and (min-width: $desktop-breakpoint) {
+    .instruction{
+        justify-content: space-evenly;
+        &__title {
+            font-size: 40px;
+        }
     }
 }
