@@ -76,9 +76,12 @@ const renderCardContent =(event: Event) => {
   const target = event.currentTarget as HTMLButtonElement;
   switch (target.innerText) {
     case "Level 1.0":
-      cardArrayLevel1.forEach(card => {
-        const index = cardArrayLevel1.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].chineseWord}</p><p>${cardArrayLevel1[index].englishMeaning}</p>`;
+      const sortedCardArrayLevel1_0 = [...cardArrayLevel1].sort((a,b) => {
+        return b.id - a.id;
+      });
+      sortedCardArrayLevel1_0.forEach(card => {
+        const index = sortedCardArrayLevel1_0.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel1_0[index].chineseWord}</p><p>${sortedCardArrayLevel1_0[index].englishMeaning}</p>`;
       });
       break;
     case "Level 1.1":
@@ -94,15 +97,21 @@ const renderCardContent =(event: Event) => {
       });
       break;
     case "Level 1.2":
-      cardArrayLevel1.forEach(card => {
-        const index = cardArrayLevel1.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].chineseWord}</p>`;
+      const sortedCardArrayLevel1_2 = [...cardArrayLevel1].sort((a,b) => {
+        return a.id - b.id;
+      });
+      sortedCardArrayLevel1_2.forEach(card => {
+        const index = sortedCardArrayLevel1_2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel1_2[index].chineseWord}</p>`;
       });
       break;
     case "Level 2.0":
-      cardArrayLevel2.forEach(card => {
-        const index = cardArrayLevel2.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].chineseWord}</p><p>${cardArrayLevel2[index].englishMeaning}</p>`;
+      const sortedCardArrayLevel2_0 = [...cardArrayLevel2].sort((a,b) => {
+        return b.id - a.id;
+      });
+      sortedCardArrayLevel2_0.forEach(card => {
+        const index = sortedCardArrayLevel2_0.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel2_0[index].chineseWord}</p><p>${sortedCardArrayLevel2_0[index].englishMeaning}</p>`;
       });
       break;
     case "Level 2.1":
@@ -118,15 +127,21 @@ const renderCardContent =(event: Event) => {
       });
       break;
     case "Level 2.2":
+      const sortedCardArrayLevel2_2 = [...cardArrayLevel2].sort((a,b) => {
+        return a.id - b.id;
+      });
       cardArrayLevel2.forEach(card => {
-        const index = cardArrayLevel2.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].chineseWord}</p>`;
+        const index = sortedCardArrayLevel2_2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel2_2[index].chineseWord}</p>`;
       });
       break
     case "Level 3.0":
-      cardArrayLevel3.forEach(card => {
-        const index = cardArrayLevel3.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p><p>${cardArrayLevel3[index].englishMeaning}</p>`;
+      const sortedCardArrayLevel3_0 = [...cardArrayLevel3].sort((a,b) => {
+        return b.id - a.id;
+      });
+      sortedCardArrayLevel3_0.forEach(card => {
+        const index = sortedCardArrayLevel3_0.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel3_0[index].chineseWord}</p><p>${sortedCardArrayLevel3_0[index].englishMeaning}</p>`;
       });
       break;
     case "Level 3.1":
@@ -142,9 +157,12 @@ const renderCardContent =(event: Event) => {
       });
       break;
     default:
-      cardArrayLevel3.forEach(card => {
-        const index = cardArrayLevel3.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p>`;
+      const sortedCardArrayLevel3_2 = [...cardArrayLevel3].sort((a,b) => {
+        return a.id - b.id;
+      });
+      sortedCardArrayLevel3_2.forEach(card => {
+        const index = sortedCardArrayLevel3_2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel3_2[index].chineseWord}</p>`;
       });
   };
 };
