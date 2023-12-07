@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import { Card, cardArrayEasy, cardArrayIntermediate, cardArrayHard } from './card';
+import { Card, cardArrayLevel1, cardArrayLevel2, cardArrayLevel3 } from './card';
 
 //Gain access to the html elements
 const display = document.querySelector<HTMLElement>("#display-board");
@@ -7,21 +7,19 @@ const instruction = document.querySelector<HTMLElement>(".instruction");
 const timer = document.querySelector<HTMLHeadingElement>(".timer");
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
 const buttonContainer = document.querySelector<HTMLElement>(".buttons")
-const buttonEasy = document.querySelector<HTMLButtonElement>(".button--easy");
-const buttonInter = document.querySelector<HTMLButtonElement>(".button--inter");
-const buttonHard = document.querySelector<HTMLButtonElement>(".button--hard");
-if (!display || !instruction || !timer || !cardContainer || !buttonContainer|| !buttonEasy || !buttonInter || !buttonHard) {
+if (!display || !instruction || !timer || !cardContainer || !buttonContainer) {
   throw new Error("Issues with Selector");
 };
 const cards = document.querySelectorAll<HTMLDivElement>(".card");
+const buttons = document.querySelectorAll<HTMLButtonElement>(".button");
 
 //Function to reset the game
 const reset = () => {
   instruction.style.display = "none";
   buttonContainer.style.display = "none";
-  buttonEasy.style.display = "none";
-  buttonInter.style.display = "none";
-  buttonHard.style.display = "none";
+  buttons.forEach(button => {
+    button.style.display = "none";
+  });
   cards.forEach(card => {
     card.classList.remove("complete");
   })
@@ -66,47 +64,94 @@ const addEventListenerToTheCardsAfterViewing = () => {
   };
   setTimeout(addEventListenerToTheCards, 16000);
 }
-//Function that renders the card content for the easy level
-const renderCardContentEasy = () => {
+
+
+const renderCardContent =(event: Event) => {
   //reset to the beginning stage of the game
   reset();
   //set the timer and flip the cards
   setTimer();
   //add eventlistener to the each specific card after viewing
   addEventListenerToTheCardsAfterViewing();
-  //render the content for the easy level
-  cardArrayEasy.forEach(card => {
-    const index = cardArrayEasy.indexOf(card);
-    cards[index].innerHTML = `<p class="card__words">${cardArrayEasy[index].chineseWord}</p><p>${cardArrayEasy[index].englishMeaning}</p>`;
-  });
+  const target = event.currentTarget as HTMLButtonElement;
+  switch (target.innerText) {
+    case "Level 1.0":
+      cardArrayLevel1.forEach(card => {
+        const index = cardArrayLevel1.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].chineseWord}</p><p>${cardArrayLevel1[index].englishMeaning}</p>`;
+      });
+      break;
+    case "Level 1.1":
+      cardArrayLevel1.forEach(card => {
+        const index = cardArrayLevel1.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].chineseWord}</p><p>${cardArrayLevel1[index].englishMeaning}</p>`;
+        cards[0].innerHTML = `<p class="card__words">${cardArrayLevel1[0].chineseWord}</p>`;
+        cards[7].innerHTML = `<p class="card__words">${cardArrayLevel1[7].chineseWord}</p>`;
+        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel1[2].chineseWord}</p>`;
+        cards[8].innerHTML = `<p class="card__words">${cardArrayLevel1[8].chineseWord}</p>`;
+        cards[9].innerHTML = `<p class="card__words">${cardArrayLevel1[9].chineseWord}</p>`;
+        cards[10].innerHTML = `<p class="card__words">${cardArrayLevel1[10].chineseWord}</p>`;
+      });
+      break;
+    case "Level 1.2":
+      cardArrayLevel1.forEach(card => {
+        const index = cardArrayLevel1.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].chineseWord}</p>`;
+      });
+      break;
+    case "Level 2.0":
+      cardArrayLevel2.forEach(card => {
+        const index = cardArrayLevel2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].chineseWord}</p><p>${cardArrayLevel2[index].englishMeaning}</p>`;
+      });
+      break;
+    case "Level 2.1":
+      cardArrayLevel2.forEach(card => {
+        const index = cardArrayLevel2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].chineseWord}</p><p>${cardArrayLevel2[index].englishMeaning}</p>`;
+        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel2[2].chineseWord}</p>`;
+        cards[7].innerHTML = `<p class="card__words">${cardArrayLevel2[7].chineseWord}</p>`;
+        cards[3].innerHTML = `<p class="card__words">${cardArrayLevel2[3].chineseWord}</p>`;
+        cards[8].innerHTML = `<p class="card__words">${cardArrayLevel2[8].chineseWord}</p>`;
+        cards[1].innerHTML = `<p class="card__words">${cardArrayLevel2[1].chineseWord}</p>`;
+        cards[4].innerHTML = `<p class="card__words">${cardArrayLevel2[4].chineseWord}</p>`;
+      });
+      break;
+    case "Level 2.2":
+      cardArrayLevel2.forEach(card => {
+        const index = cardArrayLevel2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].chineseWord}</p>`;
+      });
+      break
+    case "Level 3.0":
+      cardArrayLevel3.forEach(card => {
+        const index = cardArrayLevel3.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p><p>${cardArrayLevel3[index].englishMeaning}</p>`;
+      });
+      break;
+    case "Level 3.1":
+      cardArrayLevel3.forEach(card => {
+        const index = cardArrayLevel3.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p><p>${cardArrayLevel3[index].englishMeaning}</p>`;
+        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel3[2].chineseWord}</p>`;
+        cards[9].innerHTML = `<p class="card__words">${cardArrayLevel3[9].chineseWord}</p>`;
+        cards[4].innerHTML = `<p class="card__words">${cardArrayLevel3[4].chineseWord}</p>`;
+        cards[10].innerHTML = `<p class="card__words">${cardArrayLevel3[10].chineseWord}</p>`;
+        cards[5].innerHTML = `<p class="card__words">${cardArrayLevel3[5].chineseWord}</p>`;
+        cards[7].innerHTML = `<p class="card__words">${cardArrayLevel3[7].chineseWord}</p>`;
+      });
+      break;
+    default:
+      cardArrayLevel3.forEach(card => {
+        const index = cardArrayLevel3.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p>`;
+      });
+  };
 };
-buttonEasy.addEventListener("click", renderCardContentEasy);
 
-//Function that renders the card content for the intermediate level
-const renderCardContentInter = () => {
-  reset();
-  setTimer();
-  addEventListenerToTheCardsAfterViewing();
-  //render the content for the intermediate level
-  cardArrayIntermediate.forEach(card => {
-    const index = cardArrayIntermediate.indexOf(card);
-    cards[index].innerHTML = `<p class="card__words">${cardArrayIntermediate[index].chineseWord}</p><p>${cardArrayIntermediate[index].englishMeaning}</p>`;
-  });
-};
-buttonInter.addEventListener("click", renderCardContentInter);
-
-//Function that renders the card content for the hard level
-const renderCardContentHard = () => {
-  reset();
-  setTimer();
-  addEventListenerToTheCardsAfterViewing();
-  //render the content for the hard level
-  cardArrayHard.forEach(card => {
-    const index = cardArrayHard.indexOf(card);
-    cards[index].innerHTML = `<p class="card__words">${cardArrayHard[index].chineseWord}</p><p>${cardArrayHard[index].englishMeaning}</p>`;
-  });
-};
-buttonHard.addEventListener("click", renderCardContentHard)
+buttons.forEach(button => {
+  button.addEventListener("click", renderCardContent);
+});
 
 
 //Game begins
@@ -143,9 +188,9 @@ const isSame = () => {
     if (numberOfCompletedPairs == 6) {
       //Game completed, diff level button appears
       buttonContainer.style.display = "flex";
-      buttonEasy.style.display = "flex";
-      buttonInter.style.display = "flex";
-      buttonHard.style.display = "flex";
+      buttons.forEach(button => {
+        button.style.display = "flex";
+      });
     }
     return true
   } else if (firstCardContent !== secondCardContent) {

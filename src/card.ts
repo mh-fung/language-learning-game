@@ -4,7 +4,7 @@ export type Card = {
     englishMeaning: string;    
 };
 
-export const cardArrayEasy: Card[] = [
+export const cardArrayLevel1: Card[] = [
     {chineseWord: "一", englishMeaning: "One"}, 
     {chineseWord: "女", englishMeaning: "Female"}, 
     {chineseWord: "火", englishMeaning: "Fire"}, 
@@ -19,7 +19,7 @@ export const cardArrayEasy: Card[] = [
     {chineseWord: "心", englishMeaning: "Heart"}, 
 ];
 
-export const cardArrayIntermediate: Card[] = [
+export const cardArrayLevel2: Card[] = [
     {chineseWord: "二", englishMeaning: "Two"}, 
     {chineseWord: "魚", englishMeaning: "Fish"}, 
     {chineseWord: "中", englishMeaning: "Middle"}, 
@@ -34,7 +34,7 @@ export const cardArrayIntermediate: Card[] = [
     {chineseWord: "二", englishMeaning: "Two"}, 
 ];
 
-export const cardArrayHard: Card[] = [
+export const cardArrayLevel3: Card[] = [
     {chineseWord: "雀", englishMeaning: "Bird"}, 
     {chineseWord: "木", englishMeaning: "Wood"}, 
     {chineseWord: "希", englishMeaning: "Hope"}, 
