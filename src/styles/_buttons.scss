@@ -1,0 +1,28 @@
+@use "./variables" as *;
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 10px;
+    height: 20vh;
+    background-color: $color-grey;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: $color-white;
+    font-size: 12px;
+    width: 30vw;
+    height:30px;
+    font-weight: bold;
+    border: 2px solid $color-black;
+    transition: 0.3s;
+    transform: skew(-20deg);
+    background-color: $color-red;
+    padding: 10px;
+}

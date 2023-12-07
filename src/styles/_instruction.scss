@@ -1,0 +1,23 @@
+@use "./variables" as *;
+
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20vh;
+    padding: 5px;
+    background-color: $color-red;
+    color: $color-white;
+    &--title {
+        font-size: 25px;
+        padding-bottom: 10px;
+        color: $color-black;
+    }
+    &--content {
+        padding: 10px;
+        text-align: center;
+        line-height: 1.2;
+        border-top: 3px solid $color-grey;
+        border-bottom: 3px solid $color-grey;
+    }
+}

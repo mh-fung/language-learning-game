@@ -1,0 +1,12 @@
+@use "./variables" as *;
+
+.header {
+    background-color: $color-red;
+    display: flex;
+    justify-content: space-around;
+    h1 {
+        font-size: 20px;
+        padding: 10px;
+        color: $color-white;
+    }
+}
