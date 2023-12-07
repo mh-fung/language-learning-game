@@ -29,9 +29,14 @@ const reset = () => {
 
 //Function for updating the timer
 let time = 15;
-const updateTimer =() => {
-  timer.innerHTML = `00:${time}`;
-  time--;
+const updateTimer = () => {
+  if (time < 10) {
+    timer.innerHTML = `00:0${time}`;
+    time--;
+  } else {
+    timer.innerHTML = `00:${time}`;
+    time--;
+  };
 };
 //Function that flips all cards
 const flipAllCards = () => {
@@ -50,7 +55,7 @@ const setTimer = () => {
   };
   setTimeout(stopTimer, 16000);
 }
-//Function to add eventlistener to the cards after viewing
+//Function to add eventlistener to the cards after viewing, so that nothing would be chnaged before the game starts
 const addEventListenerToTheCardsAfterViewing = () => {
   const addEventListenerToTheCards = () => {
     cards.forEach(card => {
@@ -77,11 +82,8 @@ buttonEasy.addEventListener("click", renderCardContentEasy);
 
 //Function that renders the card content for the intermediate level
 const renderCardContentInter = () => {
-  //reset to the beginning stage of the game
   reset();
-  //set the timer and flip the cards
   setTimer();
-  //add eventlistener to the each specific card after viewing
   addEventListenerToTheCardsAfterViewing();
   //render the content for the intermediate level
   cardArrayIntermediate.forEach(card => {
@@ -93,11 +95,8 @@ buttonInter.addEventListener("click", renderCardContentInter);
 
 //Function that renders the card content for the hard level
 const renderCardContentHard = () => {
-  //reset to the beginning stage of the game
   reset();
-  //set the timer and flip the cards
   setTimer();
-  //add eventlistener to the each specific card after viewing
   addEventListenerToTheCardsAfterViewing();
   //render the content for the hard level
   cardArrayHard.forEach(card => {
