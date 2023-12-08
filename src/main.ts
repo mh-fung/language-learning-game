@@ -2,11 +2,12 @@ import './styles/main.scss';
 import { Card, cardArrayLevel1, cardArrayLevel2, cardArrayLevel3 } from './card';
 
 //Gain access to the html elements
-const display = document.querySelector<HTMLElement>("#display-board");
+const display = document.querySelector<HTMLElement>(".display-board");
 const instruction = document.querySelector<HTMLElement>(".instruction");
 const timer = document.querySelector<HTMLHeadingElement>(".timer");
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
-const buttonContainer = document.querySelector<HTMLElement>(".buttons")
+const buttonContainer = document.querySelector<HTMLElement>(".buttons");
+
 if (!display || !instruction || !timer || !cardContainer || !buttonContainer) {
   throw new Error("Issues with Selector");
 };
@@ -76,7 +77,7 @@ const renderCardContent =(event: Event) => {
   const target = event.currentTarget as HTMLButtonElement;
   switch (target.innerText) {
     case "Level 1.0":
-      const sortedCardArrayLevel1_0 = [...cardArrayLevel1].sort((a,b) => {
+      const sortedCardArrayLevel1_0: Card[] = [...cardArrayLevel1].sort((a,b) => {
         return b.id - a.id;
       });
       sortedCardArrayLevel1_0.forEach(card => {
@@ -97,7 +98,7 @@ const renderCardContent =(event: Event) => {
       });
       break;
     case "Level 1.2":
-      const sortedCardArrayLevel1_2 = [...cardArrayLevel1].sort((a,b) => {
+      const sortedCardArrayLevel1_2: Card[] = [...cardArrayLevel1].sort((a,b) => {
         return a.id - b.id;
       });
       sortedCardArrayLevel1_2.forEach(card => {
@@ -106,7 +107,7 @@ const renderCardContent =(event: Event) => {
       });
       break;
     case "Level 2.0":
-      const sortedCardArrayLevel2_0 = [...cardArrayLevel2].sort((a,b) => {
+      const sortedCardArrayLevel2_0: Card[] = [...cardArrayLevel2].sort((a,b) => {
         return b.id - a.id;
       });
       sortedCardArrayLevel2_0.forEach(card => {
@@ -127,7 +128,7 @@ const renderCardContent =(event: Event) => {
       });
       break;
     case "Level 2.2":
-      const sortedCardArrayLevel2_2 = [...cardArrayLevel2].sort((a,b) => {
+      const sortedCardArrayLevel2_2: Card[] = [...cardArrayLevel2].sort((a,b) => {
         return a.id - b.id;
       });
       cardArrayLevel2.forEach(card => {
@@ -136,7 +137,7 @@ const renderCardContent =(event: Event) => {
       });
       break
     case "Level 3.0":
-      const sortedCardArrayLevel3_0 = [...cardArrayLevel3].sort((a,b) => {
+      const sortedCardArrayLevel3_0: Card[] = [...cardArrayLevel3].sort((a,b) => {
         return b.id - a.id;
       });
       sortedCardArrayLevel3_0.forEach(card => {
@@ -148,8 +149,8 @@ const renderCardContent =(event: Event) => {
       cardArrayLevel3.forEach(card => {
         const index = cardArrayLevel3.indexOf(card);
         cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p><p>${cardArrayLevel3[index].englishMeaning}</p>`;
-        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel3[2].chineseWord}</p>`;
-        cards[9].innerHTML = `<p class="card__words">${cardArrayLevel3[9].chineseWord}</p>`;
+        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel3[2].chineseWord}</p><p>Hey! This is my name!</p>`;
+        cards[9].innerHTML = `<p class="card__words">${cardArrayLevel3[9].chineseWord}</p><p>Hey! This is my name!</p>`;
         cards[4].innerHTML = `<p class="card__words">${cardArrayLevel3[4].chineseWord}</p>`;
         cards[10].innerHTML = `<p class="card__words">${cardArrayLevel3[10].chineseWord}</p>`;
         cards[5].innerHTML = `<p class="card__words">${cardArrayLevel3[5].chineseWord}</p>`;
@@ -157,7 +158,7 @@ const renderCardContent =(event: Event) => {
       });
       break;
     default:
-      const sortedCardArrayLevel3_2 = [...cardArrayLevel3].sort((a,b) => {
+      const sortedCardArrayLevel3_2: Card[] = [...cardArrayLevel3].sort((a,b) => {
         return a.id - b.id;
       });
       sortedCardArrayLevel3_2.forEach(card => {
