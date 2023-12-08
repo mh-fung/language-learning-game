@@ -4,7 +4,7 @@ This is a browser based game using HTML, CSS/SCSS and TypeScript and more.
 This game is a memory card flipping game but instead of pictures, traditional chinese characters are used. The player will have to pick two cards at a time and if they don't match, the cards will be flipped back.
 
 ## Code Snippet
-This the core function that flips the card when the card is clicked. 
+This is the core function that flips the card when the card is clicked. 
 
 ```const flipCard = (event: Event) => {
   const target = event.currentTarget as HTMLDivElement;
