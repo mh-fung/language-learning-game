@@ -199,8 +199,8 @@ const flipCard = (event: Event) => {
     secondCard = target;
     secondCardContent = target.innerHTML;
     setTimeout(isSame, 500);
-  }
-}
+  };
+};
 const isSame = () => {
   if (firstCardContent === secondCardContent) {
     hasFlippedCard = false;
@@ -226,5 +226,5 @@ const isSame = () => {
     secondCardContent = "";
     hasFlippedCard = false;
     return false
-  }
-}
+  };
+};
