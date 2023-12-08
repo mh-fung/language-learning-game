@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import { Card, cardArrayLevel1, cardArrayLevel2, cardArrayLevel3 } from './card';
+import {cardArrayLevel1, cardArrayLevel2, cardArrayLevel3 } from './card';
 
 //Gain access to the html elements
 const display = document.querySelector<HTMLElement>(".display-board");
@@ -67,7 +67,7 @@ const addEventListenerToTheCardsAfterViewing = () => {
 }
 
 
-const renderCardContent =(event: Event) => {
+const renderCardContent = (event: Event) => {
   //reset to the beginning stage of the game
   reset();
   //set the timer and flip the cards
@@ -77,93 +77,99 @@ const renderCardContent =(event: Event) => {
   const target = event.currentTarget as HTMLButtonElement;
   switch (target.innerText) {
     case "Level 1.0":
-      const sortedCardArrayLevel1_0: Card[] = [...cardArrayLevel1].sort((a,b) => {
-        return b.id - a.id;
+      cardArrayLevel1.sort(() => {
+        return 0.5 - Math.random();
       });
-      sortedCardArrayLevel1_0.forEach(card => {
-        const index = sortedCardArrayLevel1_0.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel1_0[index].chineseWord}</p><p>${sortedCardArrayLevel1_0[index].englishMeaning}</p>`;
+      cardArrayLevel1.forEach(card => {
+        const index = cardArrayLevel1.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].tradChinese}</p><p>${cardArrayLevel1[index].englishMeaning}</p>`;
       });
       break;
     case "Level 1.1":
+      cardArrayLevel1.sort(() => {
+        return 0.5 - Math.random();
+      });
       cardArrayLevel1.forEach(card => {
-        const index = cardArrayLevel1.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].chineseWord}</p><p>${cardArrayLevel1[index].englishMeaning}</p>`;
-        cards[0].innerHTML = `<p class="card__words">${cardArrayLevel1[0].chineseWord}</p>`;
-        cards[7].innerHTML = `<p class="card__words">${cardArrayLevel1[7].chineseWord}</p>`;
-        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel1[2].chineseWord}</p>`;
-        cards[8].innerHTML = `<p class="card__words">${cardArrayLevel1[8].chineseWord}</p>`;
-        cards[9].innerHTML = `<p class="card__words">${cardArrayLevel1[9].chineseWord}</p>`;
-        cards[10].innerHTML = `<p class="card__words">${cardArrayLevel1[10].chineseWord}</p>`;
+        if (card.hideEng == true) {
+          const index = cardArrayLevel1.indexOf(card);
+          cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].tradChinese}</p>`;
+        } else {
+          const index = cardArrayLevel1.indexOf(card);
+          cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].tradChinese}</p><p class="card__words">${cardArrayLevel1[index].englishMeaning}</p>`;
+        }
       });
       break;
     case "Level 1.2":
-      const sortedCardArrayLevel1_2: Card[] = [...cardArrayLevel1].sort((a,b) => {
-        return a.id - b.id;
+      cardArrayLevel1.sort(() => {
+        return 0.5 - Math.random();
       });
-      sortedCardArrayLevel1_2.forEach(card => {
-        const index = sortedCardArrayLevel1_2.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel1_2[index].chineseWord}</p>`;
+      cardArrayLevel1.forEach(card => {
+        const index = cardArrayLevel1.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel1[index].tradChinese}</p>`;
       });
       break;
     case "Level 2.0":
-      const sortedCardArrayLevel2_0: Card[] = [...cardArrayLevel2].sort((a,b) => {
-        return b.id - a.id;
+      cardArrayLevel2.sort(() => {
+        return 0.5 - Math.random();
       });
-      sortedCardArrayLevel2_0.forEach(card => {
-        const index = sortedCardArrayLevel2_0.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel2_0[index].chineseWord}</p><p>${sortedCardArrayLevel2_0[index].englishMeaning}</p>`;
+      cardArrayLevel2.forEach(card => {
+        const index = cardArrayLevel2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].tradChinese}</p><p class="card__words">${cardArrayLevel2[index].englishMeaning}</p>`;
       });
       break;
     case "Level 2.1":
+      cardArrayLevel2.sort(() => {
+        return 0.5 - Math.random();
+      });
       cardArrayLevel2.forEach(card => {
-        const index = cardArrayLevel2.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].chineseWord}</p><p>${cardArrayLevel2[index].englishMeaning}</p>`;
-        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel2[2].chineseWord}</p>`;
-        cards[7].innerHTML = `<p class="card__words">${cardArrayLevel2[7].chineseWord}</p>`;
-        cards[3].innerHTML = `<p class="card__words">${cardArrayLevel2[3].chineseWord}</p>`;
-        cards[8].innerHTML = `<p class="card__words">${cardArrayLevel2[8].chineseWord}</p>`;
-        cards[1].innerHTML = `<p class="card__words">${cardArrayLevel2[1].chineseWord}</p>`;
-        cards[4].innerHTML = `<p class="card__words">${cardArrayLevel2[4].chineseWord}</p>`;
+        if (card.hideEng == true) {
+          const index = cardArrayLevel2.indexOf(card);
+          cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].tradChinese}</p>`;
+        } else {
+          const index = cardArrayLevel2.indexOf(card);
+          cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].tradChinese}</p><p class="card__words">${cardArrayLevel2[index].englishMeaning}</p>`;
+        }
       });
       break;
     case "Level 2.2":
-      const sortedCardArrayLevel2_2: Card[] = [...cardArrayLevel2].sort((a,b) => {
-        return a.id - b.id;
+      cardArrayLevel2.sort(() => {
+        return 0.5 - Math.random();
       });
       cardArrayLevel2.forEach(card => {
-        const index = sortedCardArrayLevel2_2.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel2_2[index].chineseWord}</p>`;
+        const index = cardArrayLevel2.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel2[index].tradChinese}</p>`;
       });
       break
     case "Level 3.0":
-      const sortedCardArrayLevel3_0: Card[] = [...cardArrayLevel3].sort((a,b) => {
-        return b.id - a.id;
+      cardArrayLevel3.sort(() => {
+        return 0.5 - Math.random();
       });
-      sortedCardArrayLevel3_0.forEach(card => {
-        const index = sortedCardArrayLevel3_0.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel3_0[index].chineseWord}</p><p>${sortedCardArrayLevel3_0[index].englishMeaning}</p>`;
+      cardArrayLevel3.forEach(card => {
+        const index = cardArrayLevel3.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].tradChinese}</p><p class="card__words">${cardArrayLevel3[index].englishMeaning}</p>`;
       });
       break;
     case "Level 3.1":
+      cardArrayLevel3.sort(() => {
+        return 0.5 - Math.random();
+      });
       cardArrayLevel3.forEach(card => {
-        const index = cardArrayLevel3.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].chineseWord}</p><p>${cardArrayLevel3[index].englishMeaning}</p>`;
-        cards[2].innerHTML = `<p class="card__words">${cardArrayLevel3[2].chineseWord}</p><p>Hey! This is my name!</p>`;
-        cards[9].innerHTML = `<p class="card__words">${cardArrayLevel3[9].chineseWord}</p><p>Hey! This is my name!</p>`;
-        cards[4].innerHTML = `<p class="card__words">${cardArrayLevel3[4].chineseWord}</p>`;
-        cards[10].innerHTML = `<p class="card__words">${cardArrayLevel3[10].chineseWord}</p>`;
-        cards[5].innerHTML = `<p class="card__words">${cardArrayLevel3[5].chineseWord}</p>`;
-        cards[7].innerHTML = `<p class="card__words">${cardArrayLevel3[7].chineseWord}</p>`;
+        if (card.hideEng == true) {
+          const index = cardArrayLevel3.indexOf(card);
+          cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].tradChinese}</p>`;
+        } else {
+          const index = cardArrayLevel3.indexOf(card);
+          cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].tradChinese}</p><p class="card__words">${cardArrayLevel3[index].englishMeaning}</p>`;
+        }
       });
       break;
     default:
-      const sortedCardArrayLevel3_2: Card[] = [...cardArrayLevel3].sort((a,b) => {
-        return a.id - b.id;
+      cardArrayLevel3.sort(() => {
+        return 0.5 - Math.random();
       });
-      sortedCardArrayLevel3_2.forEach(card => {
-        const index = sortedCardArrayLevel3_2.indexOf(card);
-        cards[index].innerHTML = `<p class="card__words">${sortedCardArrayLevel3_2[index].chineseWord}</p>`;
+      cardArrayLevel3.forEach(card => {
+        const index = cardArrayLevel3.indexOf(card);
+        cards[index].innerHTML = `<p class="card__words">${cardArrayLevel3[index].tradChinese}</p>`;
       });
   };
 };
