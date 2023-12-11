@@ -6,7 +6,7 @@
     align-items: center;
     height: 20vh;
     padding: 5px;
-    background-color: $color-red;
+    background: linear-gradient(180deg, $color-red 0%, $color-grey 100%);
     color: $color-white;
     &__title {
         font-size: 25px;
@@ -17,8 +17,8 @@
         padding: 10px;
         text-align: center;
         line-height: 1.2;
-        border-top: 3px solid $color-grey;
-        border-bottom: 3px solid $color-grey;
+        border-top: 3px solid $color-black;
+        border-bottom: 3px solid $color-black;
     }
 }
 

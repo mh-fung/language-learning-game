@@ -11,7 +11,7 @@ let numberOfCompletedPairs: number = 0;
 let time = 15;
 
 //Query Selectors
-const display = document.querySelector<HTMLElement>(".display-board");
+const display = document.querySelector<HTMLElement>(".score-board");
 const instruction = document.querySelector<HTMLElement>(".instruction");
 const timer = document.querySelector<HTMLHeadingElement>(".timer");
 const cardContainer = document.querySelector<HTMLDivElement>(".card-container");
